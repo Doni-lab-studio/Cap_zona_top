@@ -3,30 +3,49 @@
 <head>
     <title>Ссылки с иконками</title>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+        
         .messenger-links {
             display: flex;
-            gap: 15px;
-            margin: 20px;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
         }
+        
         .messenger-link {
             display: flex;
             align-items: center;
-            padding: 12px 20px;
+            padding: 15px 25px;
             border-radius: 8px;
             text-decoration: none;
             color: white;
             font-weight: bold;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
+        
         .messenger-link:hover {
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
+        
         .telegram {
             background-color: #0088cc;
         }
+        
         .viber {
             background-color: #7360f2;
         }
+        
         .icon {
             width: 20px;
             height: 20px;
@@ -40,7 +59,7 @@
             <span>Telegram</span>
         </a>
         
-        <a href="viber://chat?number=" class="messenger-link viber" target="_blank">
+        <a href="viber://chat?number=+380970010601" class="messenger-link viber" target="_blank">
             <span>Viber</span>
         </a>
     </div>
