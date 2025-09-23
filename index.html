@@ -10,12 +10,31 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            
+            /* Фоновая картинка на весь экран */
+            background-image: url('https://images.unian.net/photos/2023_10/thumb_files/800_0_1697803734-6560.png?r=174281');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        /* Затемнение фона для лучшей читаемости */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
         }
         
         .messenger-links {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
@@ -24,42 +43,50 @@
         .messenger-link {
             display: flex;
             align-items: center;
-            padding: 15px 25px;
-            border-radius: 8px;
+            justify-content: center;
+            padding: 25px 40px;
+            border-radius: 15px;
             text-decoration: none;
             color: white;
             font-weight: bold;
+            font-size: 24px;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            min-width: 200px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.3);
         }
         
         .messenger-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
         }
         
         .telegram {
-            background-color: #0088cc;
+            background: linear-gradient(135deg, #0088cc, #006699);
         }
         
         .viber {
-            background-color: #7360f2;
+            background: linear-gradient(135deg, #7360f2, #5a4acf);
         }
         
-        .icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
+        .messenger-link i {
+            margin-right: 15px;
+            font-size: 32px;
         }
     </style>
+    <!-- Подключаем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="messenger-links">
         <a href="https://t.me/cap_zona_top" class="messenger-link telegram" target="_blank">
+            <i class="fab fa-telegram"></i>
             <span>Telegram</span>
         </a>
         
-        <a href="viber://chat?number=+380970010601" class="messenger-link viber" target="_blank">
+        <a href="https://viber.com+380970010601" class="messenger-link viber" target="_blank">
+            <i class="fab fa-viber"></i>
             <span>Viber</span>
         </a>
     </div>
