@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ссылки с иконками</title>
+    <style>
+        .messenger-links {
+            display: flex;
+            gap: 15px;
+            margin: 20px;
+        }
+        .messenger-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .messenger-link:hover {
+            transform: scale(1.05);
+        }
+        .telegram {
+            background-color: #0088cc;
+        }
+        .viber {
+            background-color: #7360f2;
+        }
+        .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="messenger-links">
+        <a href="https://t.me/cap_zona_top" class="messenger-link telegram" target="_blank">
+            <span>Telegram</span>
+        </a>
+        
+        <a href="viber://chat?number=" class="messenger-link viber" target="_blank">
+            <span>Viber</span>
+        </a>
+    </div>
+</body>
+</html>
