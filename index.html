@@ -6,6 +6,7 @@
     <title>ГОЛОВНІ УБОРИ - Шапки, кепки, шарфи</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Все предыдущие стили остаются без изменений */
         * {
             margin: 0;
             padding: 0;
@@ -17,8 +18,62 @@
             line-height: 1.6;
             color: white;
             min-height: 100vh;
-            
-            /* Красивая фоновая картинка на весь экран */
+            overflow-x: hidden;
+        }
+
+        /* Анимация загрузки */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top: 5px solid #0088cc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        .loader-text {
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .content {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .content.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Основные стили */
+        body.loaded {
             background-image: url('https://vin.vn.ua/media/k2/items/cache/733263d34c0161f73e23a0fed66b1312_XL.jpg');
             background-size: cover;
             background-position: center;
@@ -27,7 +82,7 @@
         }
 
         /* Затемнение фона для лучшей читаемости */
-        body::before {
+        body.loaded::before {
             content: '';
             position: fixed;
             top: 0;
@@ -52,7 +107,15 @@
             padding: 30px 20px;
             background: transparent;
             border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .header.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .main-title {
@@ -75,17 +138,60 @@
             font-size: 22px;
             font-weight: bold;
             color: white;
-            margin: 20px 0;
+            margin: 10px 0;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
-        .order-info {
+        .client-text {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            margin-top: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Блок с текстовой информацией */
+        .info-blocks {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .info-block {
+            background: transparent;
+            padding: 25px 20px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid rgba(255,255,255,0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .info-block.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Блок с кнопками */
+        .messengers-section {
             background: transparent;
             padding: 30px 25px;
             border-radius: 20px;
             margin: 25px 0;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.2);
             text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.4s;
+        }
+
+        .messengers-section.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .messengers {
@@ -110,6 +216,13 @@
             min-width: 180px;
             justify-content: center;
             border: 2px solid rgba(255,255,255,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .messenger-btn.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .messenger-btn:hover {
@@ -134,65 +247,18 @@
             font-size: 28px;
         }
 
-        .phone-section {
-            background: transparent;
-            color: white;
-            padding: 30px 25px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 25px 0;
-            border: 1px solid rgba(255,255,255,0.2);
+        .phone-numbers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
         }
 
-        .phone-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            opacity: 0.9;
-            font-weight: normal;
-        }
-
-        .viber-number {
-            font-size: 24px;
+        .phone-number {
+            font-size: 22px;
             color: #cccccc;
-            margin-top: 5px;
             font-weight: bold;
             letter-spacing: 1px;
-        }
-
-        .catalog-info {
-            background: transparent;
-            color: white;
-            padding: 25px 20px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 25px 0;
-            font-size: 20px;
-            font-weight: bold;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .work-hours {
-            background: transparent;
-            color: white;
-            padding: 25px 20px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 25px 0;
-            font-size: 18px;
-            font-weight: bold;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .payment-info {
-            background: transparent;
-            color: white;
-            padding: 25px 20px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 25px 0;
-            font-size: 18px;
-            font-weight: bold;
-            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .divider {
@@ -221,19 +287,31 @@
                 font-size: 26px;
             }
             
+            .client-text {
+                font-size: 26px;
+            }
+            
             .messenger-btn {
                 min-width: 200px;
                 font-size: 22px;
                 padding: 25px 35px;
             }
             
-            .viber-number {
-                font-size: 28px;
+            .phone-number {
+                font-size: 24px;
             }
             
-            .order-info, .phone-section, .catalog-info, 
-            .work-hours, .payment-info {
+            .info-block {
+                font-size: 20px;
+                padding: 30px 25px;
+            }
+            
+            .messengers-section {
                 padding: 35px 30px;
+            }
+            
+            .header {
+                padding: 35px 25px;
             }
         }
 
@@ -264,91 +342,174 @@
                 font-size: 20px;
             }
             
-            .viber-number {
+            .client-text {
                 font-size: 20px;
+            }
+            
+            .phone-number {
+                font-size: 18px;
+            }
+            
+            .info-block {
+                font-size: 16px;
+                padding: 20px 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="main-title">ГОЛОВНІ УБОРИ - Шапки, кепки, шарфи</div>
-            <div class="subtitle">cap_zona_top</div>
-            <div class="individual-approach">Індивідуальний підхід до кожного</div>
+    <!-- Анимация загрузки -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Завантаження...</div>
         </div>
+    </div>
 
-        <div class="order-info">
-            <div class="individual-approach">Замовлення приймаємо в будь-якому месенджері</div>
-            
-            <div class="divider"></div>
-            
-            <div class="messengers">
-                <a href="https://t.me/cap_zona_top" class="messenger-btn telegram" target="_blank">
-                    <i class="fab fa-telegram"></i>
-                    Telegram
-                </a>
-                
-                <a href="viber://chat?number=+380970010601" class="messenger-btn viber" target="_blank">
-                    <i class="fab fa-viber"></i>
-                    Viber
-                </a>
-                
-                <a href="https://instagram.com/cap_zona_top" class="messenger-btn instagram" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                    Instagram
-                </a>
+    <!-- Основной контент -->
+    <div class="content" id="content">
+        <div class="container">
+            <div class="header" id="header">
+                <div class="main-title">ГОЛОВНІ УБОРИ - Шапки, кепки, шарфи</div>
+                <div class="subtitle">cap_zona_top</div>
+                <div class="individual-approach">Індивідуальний підхід до кожного</div>
+                <div class="client-text">клієнта</div>
             </div>
-        </div>
 
-        <div class="phone-section">
-            <div class="phone-title">Телефон для замовлення</div>
-            <div class="viber-number">Viber +38 097 001 06 01</div> <!-- Изменил формат номера -->
-        </div>
+            <!-- Текстовые блоки -->
+            <div class="info-blocks">
+                <div class="info-block" id="block1">
+                    <div>Телефон для замовлення</div>
+                    <div class="phone-numbers">
+                        <div class="phone-number">Viber +38 097 001 06 01</div>
+                        <div class="phone-number">Telegram +38 097 001 06 01</div>
+                    </div>
+                </div>
 
-        <div class="catalog-info">
-            Каталог товару в Telegram + тут
-        </div>
+                <div class="info-block" id="block2">
+                    Каталог товару в Telegram и Instagram
+                </div>
 
-        <div class="work-hours">
-            Працюємо з Пн-Сб. 9:00-18:00
-        </div>
+                <div class="info-block" id="block3">
+                    Працюємо з Пн-Сб. 9:00-21:00
+                </div>
 
-        <div class="payment-info">
-            Відправлення при повній оплаті на ФОП
+                <div class="info-block" id="block4">
+                    Відправлення при повній оплаті на ФОП
+                </div>
+            </div>
+
+            <!-- Кнопки мессенджеров -->
+            <div class="messengers-section" id="messengersSection">
+                <div class="individual-approach">Замовлення приймаємо в будь-якому месенджері</div>
+                
+                <div class="divider"></div>
+                
+                <div class="messengers">
+                    <!-- Безопасные ссылки для соцсетей -->
+                    <a href="https://t.me/cap_zona_top" class="messenger-btn telegram" id="telegramBtn" target="_blank" onclick="handleTelegramClick(event)">
+                        <i class="fab fa-telegram"></i>
+                        Telegram
+                    </a>
+                    
+                    <a href="https://viber.com" class="messenger-btn viber" id="viberBtn" target="_blank" onclick="handleViberClick(event)">
+                        <i class="fab fa-viber"></i>
+                        Viber
+                    </a>
+                    
+                    <a href="https://instagram.com/cap_zona_top" class="messenger-btn instagram" id="instagramBtn" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        Instagram
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Автоматическое определение устройства для Viber
-        document.querySelector('.viber').addEventListener('click', function(e) {
-            if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                // Мобильное устройство - открываем Viber
-                window.location.href = 'viber://chat?number=+380970010601';
-                e.preventDefault();
-                
-                // Резервный вариант если Viber не установлен
+        // Умные обработчики кликов для работы в соцсетях
+        function handleTelegramClick(event) {
+            // Если открыто из TikTok или другой соцсети
+            if (isSocialMediaApp()) {
+                // Открываем безопасную ссылку
+                window.open('https://t.me/cap_zona_top', '_blank');
+            } else {
+                // Обычное поведение - пробуем открыть в приложении
+                window.location.href = 'tg://resolve?domain=cap_zona_top';
                 setTimeout(function() {
-                    window.location.href = 'https://viber.com';
+                    window.open('https://t.me/cap_zona_top', '_blank');
                 }, 500);
             }
-        });
+            event.preventDefault();
+        }
 
-        // Красивое появление элементов при загрузке
-        document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.header, .order-info, .phone-section, .catalog-info, .work-hours, .payment-info');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(30px)';
-                    el.style.transition = 'all 0.6s ease';
+        function handleViberClick(event) {
+            if (isSocialMediaApp()) {
+                // Для соцсетей - безопасная ссылка
+                window.open('https://viber.com', '_blank');
+            } else if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                // Мобильное устройство - открываем Viber
+                window.location.href = 'viber://chat?number=+380970010601';
+                setTimeout(function() {
+                    window.open('https://viber.com', '_blank');
+                }, 500);
+            } else {
+                // Для компьютеров
+                window.open('https://viber.com', '_blank');
+            }
+            event.preventDefault();
+        }
+
+        // Проверяем, открыто ли из соцсети
+        function isSocialMediaApp() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.includes('tiktok') || 
+                   userAgent.includes('instagram') || 
+                   userAgent.includes('facebook') ||
+                   userAgent.includes('twitter') ||
+                   userAgent.includes('snapchat');
+        }
+
+        // Симуляция загрузки с анимацией
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('loader');
+                const content = document.getElementById('content');
+                const header = document.getElementById('header');
+                const blocks = document.querySelectorAll('.info-block');
+                const messengersSection = document.getElementById('messengersSection');
+                const buttons = document.querySelectorAll('.messenger-btn');
+                
+                // Скрываем loader
+                loader.style.opacity = '0';
+                
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                    document.body.classList.add('loaded');
+                    content.classList.add('loaded');
                     
-                    setTimeout(() => {
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                    }, 50);
-                }, index * 200);
-            });
+                    // Поочередное появление элементов
+                    setTimeout(function() {
+                        header.classList.add('loaded');
+                        
+                        blocks.forEach((block, index) => {
+                            setTimeout(function() {
+                                block.classList.add('loaded');
+                            }, index * 200);
+                        });
+                        
+                        setTimeout(function() {
+                            messengersSection.classList.add('loaded');
+                            
+                            buttons.forEach((button, index) => {
+                                setTimeout(function() {
+                                    button.classList.add('loaded');
+                                }, index * 150);
+                            });
+                        }, 400);
+                    }, 300);
+                }, 500);
+            }, 1000);
         });
     </script>
 </body>
