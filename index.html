@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>shapky vsim | Головні убори оптом та в роздріб</title>
+  <title>shapky vsim | Головні убори в роздріб</title>
   
-  <!-- Подключение иконок FontAwesome -->
+  <!-- Підключення іконок FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Подключение шрифта Montserrat -->
+  <!-- Підключення шрифту Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
@@ -15,7 +15,6 @@
       --bg-gradient: linear-gradient(135deg, #0f0c20 0%, #15102a 50%, #06040a 100%);
       --glass-bg: rgba(255, 255, 255, 0.05);
       --glass-border: rgba(255, 255, 255, 0.12);
-      --accent-color: #00f2fe;
       --text-main: #ffffff;
       --text-muted: #a0a5ba;
     }
@@ -45,7 +44,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Основной контейнер */
+    /* Основний контейнер */
     .card-container {
       width: 100%;
       max-width: 440px;
@@ -71,7 +70,7 @@
       }
     }
 
-    /* Логотип и заголовок */
+    /* Логотип і заголовок */
     .brand-title {
       font-size: 2.2rem;
       font-weight: 800;
@@ -92,55 +91,63 @@
       font-weight: 600;
     }
 
-    /* Карточка статуса / Важные детали */
+    /* Картка статусу / Важливі деталі */
     .info-badge {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 16px;
-      padding: 14px;
+      padding: 16px 14px;
       margin-bottom: 24px;
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-
-    /* Сетка кнопок мессенджеров (Telegram и Viber) */
-    .messengers-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .btn-social {
       display: flex;
       flex-direction: column;
+      gap: 6px;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 16px 10px;
-      border-radius: 16px;
-      text-decoration: none;
-      color: #fff;
-      font-size: 0.9rem;
+    }
+
+    .info-primary {
+      font-size: 0.95rem;
       font-weight: 600;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .btn-social i {
-      font-size: 1.6rem;
+    .info-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .btn-social:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    .info-sub i.fa-telegram {
+      color: #2AABEE;
     }
 
-    .btn-tg { background: linear-gradient(135deg, #2AABEE, #229ED9); }
-    .btn-viber { background: linear-gradient(135deg, #7360F2, #59267c); }
+    .info-sub i.fa-viber {
+      color: #7360F2;
+    }
 
-    /* Блок телефона */
+    .arrow-bounce {
+      display: inline-block;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(6px);
+      }
+      60% {
+        transform: translateY(3px);
+      }
+    }
+
+    /* Блок телефону та кнопок */
     .phone-block {
       margin-bottom: 24px;
     }
@@ -164,6 +171,7 @@
       border-radius: 50px;
       border: 1px solid var(--glass-border);
       transition: all 0.3s ease;
+      margin-bottom: 12px;
     }
 
     .phone-number:hover {
@@ -172,44 +180,41 @@
       transform: scale(1.03);
     }
 
+    /* Кнопка Viber */
+    .viber-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 20px;
+      background: #7360F2;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(115, 96, 242, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .viber-btn:hover {
+      background: #5e4bd8;
+      box-shadow: 0 6px 20px rgba(115, 96, 242, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .viber-btn i {
+      font-size: 1.2rem;
+    }
+
     .work-hours {
       font-size: 0.8rem;
       color: var(--text-muted);
-      margin-top: 8px;
+      margin-top: 12px;
     }
 
-    /* Акцентная кнопка Каталога */
-    .catalog-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      width: 100%;
-      padding: 16px;
-      background: linear-gradient(90deg, #00c6ff, #0072ff);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 18px;
-      margin-bottom: 24px;
-      box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
-      transition: all 0.3s ease;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 198, 255, 0.5); }
-      70% { box-shadow: 0 0 0 15px rgba(0, 198, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 198, 255, 0); }
-    }
-
-    .catalog-btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.1);
-    }
-
-    /* Информация про доставку */
+    /* Інформація про доставку */
     .delivery-info {
       font-size: 0.9rem;
       font-weight: 600;
@@ -226,41 +231,36 @@
     
     <!-- Заголовок / Логотип -->
     <h1 class="brand-title">shapky vsim</h1>
-    <p class="brand-subtitle">Головні убори оптом та в роздріб</p>
+    <p class="brand-subtitle">Головні убори в роздріб</p>
 
-    <!-- Информация -->
+    <!-- Інформаційне повідомлення -->
     <div class="info-badge">
-      ⚡ <b>Індивідуальний підхід до кожного</b><br>
-      <span style="font-size: 0.85rem; color: var(--text-muted);">Замовлення приймаємо в будь-якому месенджері</span>
+      <div class="info-primary">
+        Замовлення приймаємо за цим номером <span class="arrow-bounce">👇</span>
+      </div>
+      <div class="info-sub">
+        (в Telegram <i class="fa-brands fa-telegram"></i> та Viber <i class="fa-brands fa-viber"></i>)
+      </div>
     </div>
 
-    <!-- Кнопки мессенджеров (Telegram и Viber) -->
-    <div class="messengers-grid">
-      <a href="https://t.me/Irishka_store" class="btn-social btn-tg" target="_blank">
-        <i class="fa-brands fa-telegram"></i>
-        Telegram
-      </a>
-      <a href="viber://chat?number=%2B380970010601" class="btn-social btn-viber">
-        <i class="fa-brands fa-viber"></i>
-        Viber
-      </a>
-    </div>
-
-    <!-- Телефон -->
+    <!-- Блок з номером телефону та кнопкою Viber -->
     <div class="phone-block">
       <div class="phone-title">Телефон для замовлення:</div>
+      
+      <!-- Звонок -->
       <a href="tel:+380970010601" class="phone-number">
         <i class="fa-solid fa-phone"></i>
         +38 097 001 0601
       </a>
+
+      <!-- Кнопка Viber -->
+      <a href="viber://chat?number=%2B380970010601" class="viber-btn">
+        <i class="fa-brands fa-viber"></i>
+        Написати в Viber
+      </a>
+
       <div class="work-hours">⏰ Працюємо з Пн-Нд: 9:00 - 19:00</div>
     </div>
-
-    <!-- Каталог товаров -->
-    <a href="https://t.me/ira0200" class="catalog-btn" target="_blank">
-      <i class="fa-solid fa-store"></i>
-      Каталог товару в Telegram
-    </a>
 
     <!-- Доставка -->
     <div class="delivery-info">
